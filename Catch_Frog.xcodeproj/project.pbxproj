@@ -13,6 +13,8 @@
 		430B05C826F36F6A0032C0E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430B05C626F36F6A0032C0E2 /* Main.storyboard */; };
 		430B05CA26F36F6D0032C0E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430B05C926F36F6D0032C0E2 /* Assets.xcassets */; };
 		430B05CD26F36F6D0032C0E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430B05CB26F36F6D0032C0E2 /* LaunchScreen.storyboard */; };
+		435E70E726F4AD5B00F2D061 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = 435E70E426F4AD5A00F2D061 /* Sound */; };
+		435E70E826F4AD5B00F2D061 /* pic_sound in Resources */ = {isa = PBXBuildFile; fileRef = 435E70E526F4AD5A00F2D061 /* pic_sound */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		430B05C926F36F6D0032C0E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		430B05CC26F36F6D0032C0E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		430B05CE26F36F6D0032C0E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		435E70E426F4AD5A00F2D061 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sound; path = ../../../Desktop/Sound; sourceTree = "<group>"; };
+		435E70E526F4AD5A00F2D061 /* pic_sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = pic_sound; path = ../../../Desktop/pic_sound; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				430B05C426F36F6A0032C0E2 /* ViewController.swift */,
 				430B05C626F36F6A0032C0E2 /* Main.storyboard */,
 				430B05C926F36F6D0032C0E2 /* Assets.xcassets */,
+				435E70E526F4AD5A00F2D061 /* pic_sound */,
+				435E70E426F4AD5A00F2D061 /* Sound */,
 				430B05CB26F36F6D0032C0E2 /* LaunchScreen.storyboard */,
 				430B05CE26F36F6D0032C0E2 /* Info.plist */,
 			);
@@ -124,8 +130,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				435E70E826F4AD5B00F2D061 /* pic_sound in Resources */,
 				430B05CD26F36F6D0032C0E2 /* LaunchScreen.storyboard in Resources */,
 				430B05CA26F36F6D0032C0E2 /* Assets.xcassets in Resources */,
+				435E70E726F4AD5B00F2D061 /* Sound in Resources */,
 				430B05C826F36F6A0032C0E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +300,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hwan05.Catch-Frog";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hwan05.CatchFrog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -310,7 +318,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hwan05.Catch-Frog";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hwan05.CatchFrog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
