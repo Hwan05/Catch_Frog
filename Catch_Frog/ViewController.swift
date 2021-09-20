@@ -22,13 +22,14 @@ class ViewController: UIViewController {
     
     
     func start() {
+        gameonoff = true
         timerstart()
-//        while elapsedTime != 0{
-//            let random = arc4random() % 5
-//            HoleButtonArray[Int(random)].setTitle("x", for: UIControl.State.normal)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){}
-//            HoleButtonArray[Int(random)].setTitle("o", for: UIControl.State.normal)
-//        }
+        while elapsedTime == 0{
+            let random = arc4random() % 5
+            HoleButtonArray[Int(random)].setTitle("x", for: UIControl.State.normal)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){}
+            HoleButtonArray[Int(random)].setTitle("o", for: UIControl.State.normal)
+        }
 //
 //        if elapsedTime == 0 {
 //            //notification 게임 종료 알림
@@ -37,9 +38,10 @@ class ViewController: UIViewController {
     
     // 게임 초기화
     func Nextgame (){
+        gameonoff = false
         FrogCounter = 0
         FrogCount.text = String(format: "%d",FrogCounter) // 잡은 수 초기화
-        elapsedTime = 5 // 남은시간 30초
+        elapsedTime = 30 // 남은시간 30초
         Time.text = String(format: "%d", elapsedTime)
     }
     
@@ -91,6 +93,7 @@ class ViewController: UIViewController {
     
     
     // Object
+    var gameonoff = false
     var HoleButtonArray: Array<UIButton> = [] //버튼 상태 저장
     var rank:Array<String> = [] // 랭크 저장용
     var FrogCounter = 0 // 잡은 개구리수
@@ -106,6 +109,7 @@ class ViewController: UIViewController {
         if elapsedTime == 0 { // 게임종료여부
             Nextgame()
         }else{
+            //gameonoff = false
             // 게임중단 승인
             //return notification
         }
@@ -139,12 +143,14 @@ class ViewController: UIViewController {
     @IBAction func FrogHole1(_ sender: UIButton) {
         var elap = 0.0
         //game 진행여부
-        if elapsedTime != 0{
+        if elapsedTime > 0 && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
                 elapsedTime += 3
             }else{
                 // 비활성
+                Time.text = String(format: "\(elapsedTime) - %d초", 1)
+                elapsedTime -= 1
             }
             
         }
@@ -152,12 +158,14 @@ class ViewController: UIViewController {
     @IBAction func FrogHole2(_ sender: UIButton) {
         var elap = 0.0
         //game 진행여부
-        if elapsedTime != 0{
+        if elapsedTime > 0 && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
                 elapsedTime += 3
             }else{
                 // 비활성
+                Time.text = String(format: "\(elapsedTime) - %d초", 1)
+                elapsedTime -= 1
             }
             
         }
@@ -165,12 +173,14 @@ class ViewController: UIViewController {
     @IBAction func FrogHole3(_ sender: UIButton) {
         var elap = 0.0
         //game 진행여부
-        if elapsedTime != 0{
+        if elapsedTime > 0 && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
                 elapsedTime += 3
             }else{
                 // 비활성
+                Time.text = String(format: "\(elapsedTime) - %d초", 1)
+                elapsedTime -= 1
             }
             
         }
@@ -178,12 +188,14 @@ class ViewController: UIViewController {
     @IBAction func FrogHole4(_ sender: UIButton) {
         var elap = 0.0
         //game 진행여부
-        if elapsedTime != 0{
+        if elapsedTime > 0  && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
                 elapsedTime += 3
             }else{
                 // 비활성
+                Time.text = String(format: "\(elapsedTime) - %d초", 1)
+                elapsedTime -= 1
             }
             
         }
@@ -191,14 +203,14 @@ class ViewController: UIViewController {
     @IBAction func FrogHole5(_ sender: UIButton) {
         var elap = 0.0
         //game 진행여부
-        if elapsedTime != 0{
+        if elapsedTime > 0 && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
                 elapsedTime += 3
             }else{
-                // 비활성
+                Time.text = String(format: "\(elapsedTime) - %d초", 1)
+                elapsedTime -= 1
             }
-            
         }
     }
     //-------------------------------------------------------
