@@ -9,52 +9,72 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //DidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         HoleButtonArray = [Holebtn1,Holebtn2,Holebtn3,Holebtn4,Holebtn5]
-        ranknameArray = [Rank1,Rank2,Rank3]
-        rankscoreArray = [Rank1Score,Rank2Score,Rank3Score]
-  
+        frogimage = [UIImage(named: "frog1.png")!,UIImage(named: "frog2.png")!,UIImage(named: "frog3.png")!,UIImage(named: "frog4.png")!,UIImage(named: "frog5.png")!] // frog 이미지들
 
-
-        //rankscoreArray
-        
-        func Nextgame (){
-            FrogCounter = 0
-            FrogCount.text = String(FrogCounter)
-            Time.text = "0"
+        while elapsedTime != 0.0 {
+            let random = arc4random() % 5
         }
-        func RankUpdate(_ FrogCatchCount:Int){
-            while true  {
-                var count = 0
-                if rankscores.isEmpty {
-                    rankscores.append(FrogCount.text)
-                    break
+    }
+    
+    
+    // 게임 초기화
+    func Nextgame (){
+        FrogCounter = 0
+        FrogCount.text = String(format: "%d",FrogCounter) // 잡은 수 초기화
+        elapsedTime = 30.0 // 남은시간 30초
+        Time.text = String(format: "%d", elapsedTime)
+    }
+    
+    //Rank 갱신
+    func RankUpdate(_ FrogCatchCount:Int){
+        
+        // 랭킹이 비어있는 경우
+        if ranknameArray.isEmpty {
+            ranknameArray.append(Huntername.text!)
+            rankscoreArray.append(FrogCounter)
+        }
+        else{
+            var count:Int = 0 // 배열 인덱스용
+            for i in rankscoreArray {
+                if FrogCounter > i {
+                    rankscoreArray.insert(FrogCounter, at: count)
+                    ranknameArray.insert(Huntername.text!, at: count)
+                }else{
+                    count += 1
                 }
-                if FrogCatchCount > Int(rankscoreArray[count].text!)!{
-                    }
-                }
-
             }
         }
     }
     
-    // Object
     
+    
+    
+    
+    // Object
     var HoleButtonArray: Array<UIButton> = [] //버튼 상태 저장
     var rank:Array<String> = [] // 랭크 저장용
     var elepsedTime = 0.0 // 지나간 시간
     var FrogCounter = 0 // 잡은 개구리수
     var StartTime:Data = Data() // 현재 시간정보
     var elapsedTime = 0.0 // 남은 시간
-    var rankscoreArray:Array<UILabel> = []
-    var ranknameArray:Array<UILabel> = []
-    var rankscores:Array<Int> = []
+    var rankscoreArray:Array<Int> = []
+    var ranknameArray:Array<String> = []
+    var frogimage:Array<UIImage> = []
     
     
     //RESTART
     @IBAction func Restart(_ sender: UIButton) {
+        if elapsedTime == 0.0 { // 게임종료여부
+            Nextgame()
+        }else{
+            // 게임중단 승인
+            //return
+        }
     }
     
     // Label
@@ -81,8 +101,19 @@ class ViewController: UIViewController {
     
     
     
-    //CATCH
+    //CATCH button
     @IBAction func FrogHole1(_ sender: UIButton) {
+        var elap = 0.0
+        //game 진행여부
+        if elapsedTime != 0.0{
+            if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
+                FrogCounter += 1
+                elapsedTime += 3.0
+            }else{
+                // 비활성
+            }
+            
+        }
     }
     @IBAction func FrogHole2(_ sender: UIButton) {
     }
@@ -104,4 +135,5 @@ class ViewController: UIViewController {
     @IBOutlet var Rank3Score: UILabel!
 
 }
+
 
