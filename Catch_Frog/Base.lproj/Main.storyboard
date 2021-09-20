@@ -8,24 +8,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Resultstartview-->
         <scene sceneID="3jl-Ru-fPb">
             <objects>
-                <viewController id="GeY-yd-Spl" sceneMemberID="viewController">
+                <viewController restorationIdentifier="RVC" id="GeY-yd-Spl" customClass="resultstartview" customModule="Catch_Frog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="izF-QG-m49">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRQ-KM-1Nn">
-                                <rect key="frame" x="190" y="517" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start"/>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AhI-Ez-YsO">
                                 <rect key="frame" x="106" y="413" width="203" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nametext:" destination="GeY-yd-Spl" eventType="editingDidEnd" id="JMh-FY-kjT"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hunter Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0r2-cP-DXl">
                                 <rect key="frame" x="156" y="334" width="102" height="21"/>
@@ -34,6 +32,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRQ-KM-1Nn">
+                                <rect key="frame" x="190" y="488" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="resultname:" destination="GeY-yd-Spl" eventType="touchUpInside" id="WsJ-RB-CQ3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="f11-7s-r6O"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -46,7 +52,7 @@
         <!--View Controller-->
         <scene sceneID="LRm-3o-oxV">
             <objects>
-                <viewController id="tJ9-p9-47O" customClass="ViewController" customModule="Catch_Frog" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MVC" id="tJ9-p9-47O" customClass="ViewController" customModule="Catch_Frog" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UNT-SF-wWc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,6 +234,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbZ-Pr-ewB">
+                                <rect key="frame" x="187" y="815" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="sv:" destination="tJ9-p9-47O" eventType="touchUpInside" id="Tjt-sp-ka1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="blM-Lu-D2O"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
