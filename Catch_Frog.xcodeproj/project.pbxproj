@@ -10,11 +10,14 @@
 		430B05C126F36F6A0032C0E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B05C026F36F6A0032C0E2 /* AppDelegate.swift */; };
 		430B05C326F36F6A0032C0E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B05C226F36F6A0032C0E2 /* SceneDelegate.swift */; };
 		430B05C526F36F6A0032C0E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430B05C426F36F6A0032C0E2 /* ViewController.swift */; };
-		430B05C826F36F6A0032C0E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430B05C626F36F6A0032C0E2 /* Main.storyboard */; };
-		430B05CA26F36F6D0032C0E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 430B05C926F36F6D0032C0E2 /* Assets.xcassets */; };
-		430B05CD26F36F6D0032C0E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430B05CB26F36F6D0032C0E2 /* LaunchScreen.storyboard */; };
-		435E70E726F4AD5B00F2D061 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = 435E70E426F4AD5A00F2D061 /* Sound */; };
-		435E70E826F4AD5B00F2D061 /* pic_sound in Resources */ = {isa = PBXBuildFile; fileRef = 435E70E526F4AD5A00F2D061 /* pic_sound */; };
+		436FCB8D26F871AD000FC6EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 430B05C626F36F6A0032C0E2 /* Main.storyboard */; };
+		436FCBA426F87898000FC6EF /* catch.png in Resources */ = {isa = PBXBuildFile; fileRef = 436FCB9D26F87898000FC6EF /* catch.png */; };
+		436FCBA526F87898000FC6EF /* frog5.png in Resources */ = {isa = PBXBuildFile; fileRef = 436FCB9E26F87898000FC6EF /* frog5.png */; };
+		436FCBA626F87898000FC6EF /* frog4.png in Resources */ = {isa = PBXBuildFile; fileRef = 436FCB9F26F87898000FC6EF /* frog4.png */; };
+		436FCBA726F87898000FC6EF /* Hole.png in Resources */ = {isa = PBXBuildFile; fileRef = 436FCBA026F87898000FC6EF /* Hole.png */; };
+		436FCBA826F87898000FC6EF /* frog3.png in Resources */ = {isa = PBXBuildFile; fileRef = 436FCBA126F87898000FC6EF /* frog3.png */; };
+		436FCBA926F87898000FC6EF /* frog2.png in Resources */ = {isa = PBXBuildFile; fileRef = 436FCBA226F87898000FC6EF /* frog2.png */; };
+		436FCBAA26F87898000FC6EF /* frog1.png in Resources */ = {isa = PBXBuildFile; fileRef = 436FCBA326F87898000FC6EF /* frog1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +29,13 @@
 		430B05C926F36F6D0032C0E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		430B05CC26F36F6D0032C0E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		430B05CE26F36F6D0032C0E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		435E70E426F4AD5A00F2D061 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sound; path = ../../../Desktop/Sound; sourceTree = "<group>"; };
-		435E70E526F4AD5A00F2D061 /* pic_sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = pic_sound; path = ../../../Desktop/pic_sound; sourceTree = "<group>"; };
+		436FCB9D26F87898000FC6EF /* catch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catch.png; sourceTree = "<group>"; };
+		436FCB9E26F87898000FC6EF /* frog5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frog5.png; sourceTree = "<group>"; };
+		436FCB9F26F87898000FC6EF /* frog4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frog4.png; sourceTree = "<group>"; };
+		436FCBA026F87898000FC6EF /* Hole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hole.png; sourceTree = "<group>"; };
+		436FCBA126F87898000FC6EF /* frog3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frog3.png; sourceTree = "<group>"; };
+		436FCBA226F87898000FC6EF /* frog2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frog2.png; sourceTree = "<group>"; };
+		436FCBA326F87898000FC6EF /* frog1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frog1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,13 +72,27 @@
 				430B05C226F36F6A0032C0E2 /* SceneDelegate.swift */,
 				430B05C426F36F6A0032C0E2 /* ViewController.swift */,
 				430B05C626F36F6A0032C0E2 /* Main.storyboard */,
+				436FCB9C26F87898000FC6EF /* pics */,
 				430B05C926F36F6D0032C0E2 /* Assets.xcassets */,
-				435E70E526F4AD5A00F2D061 /* pic_sound */,
-				435E70E426F4AD5A00F2D061 /* Sound */,
 				430B05CB26F36F6D0032C0E2 /* LaunchScreen.storyboard */,
 				430B05CE26F36F6D0032C0E2 /* Info.plist */,
 			);
 			path = Catch_Frog;
+			sourceTree = "<group>";
+		};
+		436FCB9C26F87898000FC6EF /* pics */ = {
+			isa = PBXGroup;
+			children = (
+				436FCB9D26F87898000FC6EF /* catch.png */,
+				436FCB9E26F87898000FC6EF /* frog5.png */,
+				436FCB9F26F87898000FC6EF /* frog4.png */,
+				436FCBA026F87898000FC6EF /* Hole.png */,
+				436FCBA126F87898000FC6EF /* frog3.png */,
+				436FCBA226F87898000FC6EF /* frog2.png */,
+				436FCBA326F87898000FC6EF /* frog1.png */,
+			);
+			name = pics;
+			path = ../../../Desktop/pics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,11 +152,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				435E70E826F4AD5B00F2D061 /* pic_sound in Resources */,
-				430B05CD26F36F6D0032C0E2 /* LaunchScreen.storyboard in Resources */,
-				430B05CA26F36F6D0032C0E2 /* Assets.xcassets in Resources */,
-				435E70E726F4AD5B00F2D061 /* Sound in Resources */,
-				430B05C826F36F6A0032C0E2 /* Main.storyboard in Resources */,
+				436FCB8D26F871AD000FC6EF /* Main.storyboard in Resources */,
+				436FCBA426F87898000FC6EF /* catch.png in Resources */,
+				436FCBA726F87898000FC6EF /* Hole.png in Resources */,
+				436FCBAA26F87898000FC6EF /* frog1.png in Resources */,
+				436FCBA626F87898000FC6EF /* frog4.png in Resources */,
+				436FCBA926F87898000FC6EF /* frog2.png in Resources */,
+				436FCBA526F87898000FC6EF /* frog5.png in Resources */,
+				436FCBA826F87898000FC6EF /* frog3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
