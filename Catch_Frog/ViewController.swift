@@ -16,37 +16,50 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         HoleButtonArray = [Holebtn1,Holebtn2,Holebtn3,Holebtn4,Holebtn5]
         frogimage = [UIImage(named: "frog1.png")!,UIImage(named: "frog2.png")!,UIImage(named: "frog3.png")!,UIImage(named: "frog4.png")!,UIImage(named: "frog5.png")!] // frog 이미지들
-
- 
+    
+        rankNameUIArray = [Rank1,Rank2,Rank3]
+        rankScroeUIArray = [Rank1Score,Rank2Score,Rank3Score]
     }
     
-    
+    //게임 시작
+    var frogtimer:Timer?
     func start() {
         gameonoff = true
         timerstart()
-        while elapsedTime == 0{
-            let random = arc4random() % 5
-            HoleButtonArray[Int(random)].setTitle("x", for: UIControl.State.normal)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){}
-            HoleButtonArray[Int(random)].setTitle("o", for: UIControl.State.normal)
+        frogtimer = Timer.scheduledTimer(timeInterval: 3.5, target: self, selector: #selector(ViewController.frog), userInfo: nil, repeats: true)
+    }
+
+    // 개구리 배치
+    @objc func frog(){
+        print("개구리배치")
+        let random = arc4random() % 5
+        let randomtime:Double = Double(arc4random_uniform(3)) + drand48()
+        self.HoleButtonArray[Int(random)].setTitle("x", for: UIControl.State.normal)
+        self.HoleButtonArray[Int(random)].setImage(frogimage[Int(random)], for: .normal)
+        Timer.scheduledTimer(withTimeInterval: randomtime , repeats: false){ (timer) in
+            print("개구리배치끝")
+            self.HoleButtonArray[Int(random)].setTitle(String(random+1), for: UIControl.State.normal)
+            self.HoleButtonArray[Int(random)].setImage(UIImage(named:""), for: .normal)
         }
-//
-//        if elapsedTime == 0 {
-//            //notification 게임 종료 알림
-//        }
+        if elapsedTime <= 0 {
+            frogtimer?.invalidate()
+            frogtimer = nil
+            print("게임 종료")
+        }
     }
     
     // 게임 초기화
     func Nextgame (){
         gameonoff = false
+        startcount = 5
         FrogCounter = 0
         FrogCount.text = String(format: "%d",FrogCounter) // 잡은 수 초기화
         elapsedTime = 30 // 남은시간 30초
         Time.text = String(format: "%d", elapsedTime)
     }
     
-    //Rank 갱신
-    func RankUpdate(_ FrogCatchCount:Int){
+    //Rank 갱신 미구현
+    func RankUpdate(){
         
         // 랭킹이 비어있는 경우
         if ranknameArray.isEmpty {
@@ -64,9 +77,12 @@ class ViewController: UIViewController {
                 }
             }
         }
+//
+//        rankNameUIArray[i].text = ranknameArray[i]
+//        rankScroeUIArray[i].text = String(rankscoreArray[i])
     }
     
-    // 제한 시간
+    /// 메인 제한 시간
     var maintime:Timer?
     func timerstart() {
     maintime =  Timer.scheduledTimer(timeInterval: 1, target: self, selector: timeSelection, userInfo: nil, repeats: true) //timer,시간간격,동작될 뷰 , 타이머가 구동될 때 실행할 함수 , 사용자 정보, 반복여부
@@ -81,18 +97,38 @@ class ViewController: UIViewController {
         if elapsedTime <= 0 {
             maintime?.invalidate()
             maintime = nil
+            RankUpdate()
+        }
+    }
+    
+    //--------------------------------------------------------
+    var startcount = 5
+    @IBAction func sb(_ sender: UIButton) {
+        if gameonoff == false {
+            startLabel.text = String(startcount)
+            maintime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.startcounter), userInfo: nil, repeats: true)
+            Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+                self.start()
+            }
+           
+        }
+    }
+    @objc func startcounter(){
+        if startcount != 0 {
+            startcount = startcount - 1
+            startLabel.text = String(startcount)
+        }else { startLabel.text = "START !"
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false ) { _ in
+                self.startLabel.text = ""
+            }
         }
     }
     
     //--------------------------------------------------------
     
-    @IBAction func sv(_ sender: UIButton) {
-        start()
-    }
-    
-    
-    
     // Object
+    var rankNameUIArray:Array<UILabel> = []
+    var rankScroeUIArray:Array<UILabel> = []
     var gameonoff = false
     var HoleButtonArray: Array<UIButton> = [] //버튼 상태 저장
     var rank:Array<String> = [] // 랭크 저장용
@@ -106,7 +142,7 @@ class ViewController: UIViewController {
     
     //RESTART BUTTON
     @IBAction func Restart(_ sender: UIButton) {
-        if elapsedTime == 0 { // 게임종료여부
+        if elapsedTime <= 0 { // 게임종료여부
             Nextgame()
         }else{
             //gameonoff = false
@@ -127,9 +163,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var Holebtn4:UIButton!
     @IBOutlet weak var Holebtn5:UIButton!
     
+    @IBOutlet var startLabel: UILabel!
     
     
-    //MODE CHANGE BUTTON
+    //MODE CHANGE BUTTON 미구현
     @IBAction func Hardmode(_ sender: UIButton) {
     }
     @IBAction func Normalmode(_ sender: UIButton) {
@@ -141,12 +178,14 @@ class ViewController: UIViewController {
     //-------------------------------------------------------
     //CATCH BUTTON
     @IBAction func FrogHole1(_ sender: UIButton) {
-        var elap = 0.0
         //game 진행여부
         if elapsedTime > 0 && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
+                FrogCount.text = String(FrogCounter)
                 elapsedTime += 3
+                Holebtn1.setTitle("1", for: .normal)
+                Holebtn1.setImage(UIImage(named:""), for: .normal)
             }else{
                 // 비활성
                 Time.text = String(format: "\(elapsedTime) - %d초", 1)
@@ -156,12 +195,14 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func FrogHole2(_ sender: UIButton) {
-        var elap = 0.0
         //game 진행여부
         if elapsedTime > 0 && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
+                FrogCount.text = String(FrogCounter)
                 elapsedTime += 3
+                Holebtn2.setTitle("2", for: .normal)
+                Holebtn2.setImage(UIImage(named:""), for: .normal)
             }else{
                 // 비활성
                 Time.text = String(format: "\(elapsedTime) - %d초", 1)
@@ -171,12 +212,14 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func FrogHole3(_ sender: UIButton) {
-        var elap = 0.0
         //game 진행여부
         if elapsedTime > 0 && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
+                FrogCount.text = String(FrogCounter)
                 elapsedTime += 3
+                Holebtn3.setTitle("3", for: .normal)
+                Holebtn3.setImage(UIImage(named:""), for: .normal)
             }else{
                 // 비활성
                 Time.text = String(format: "\(elapsedTime) - %d초", 1)
@@ -186,12 +229,14 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func FrogHole4(_ sender: UIButton) {
-        var elap = 0.0
         //game 진행여부
         if elapsedTime > 0  && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
+                FrogCount.text = String(FrogCounter)
                 elapsedTime += 3
+                Holebtn4.setTitle("4", for: .normal)
+                Holebtn4.setImage(UIImage(named:""), for: .normal)
             }else{
                 // 비활성
                 Time.text = String(format: "\(elapsedTime) - %d초", 1)
@@ -201,12 +246,14 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func FrogHole5(_ sender: UIButton) {
-        var elap = 0.0
         //game 진행여부
         if elapsedTime > 0 && gameonoff == true{
             if sender.currentTitle == "x"{ // 성공적으로 잡을 경우
                 FrogCounter += 1
+                FrogCount.text = String(FrogCounter)
                 elapsedTime += 3
+                Holebtn5.setTitle("5", for: .normal)
+                Holebtn5.setImage(UIImage(named:""), for: .normal)
             }else{
                 Time.text = String(format: "\(elapsedTime) - %d초", 1)
                 elapsedTime -= 1
