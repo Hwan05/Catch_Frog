@@ -12,9 +12,16 @@ class resultstartview: UIViewController {
     override func viewDidLoad() {
         //
     }
-    @IBAction func nametext(_ sender: UITextField) {
-    }
+    
+    var paraname:String?
+
+    @IBOutlet var nameText: UITextField!
+    
     @IBAction func resultname(_ sender: UIButton) {
+        
+//        guard  else {
+//            <#statements#>
+//        }
     }
     
 }
