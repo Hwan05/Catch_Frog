@@ -13,15 +13,22 @@ class resultstartview: UIViewController {
         //
     }
     
-    var paraname:String?
 
     @IBOutlet var nameText: UITextField!
     
-    @IBAction func resultname(_ sender: UIButton) {
+    @IBAction func resultname(_ sender: Any) {
+        guard let mvc = storyboard?.instantiateViewController(identifier: "MVC") as? ViewController else{
+            return
+        }
         
-//        guard  else {
-//            <#statements#>
-//        }
+        mvc.hunter = nameText.text!
+        
+        
+        
+        mvc.modalPresentationStyle = .fullScreen
+        self.present(mvc, animated: false)
+        
+        
     }
-    
 }
+
