@@ -14,12 +14,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        Huntername.text = hunter
         HoleButtonArray = [Holebtn1,Holebtn2,Holebtn3,Holebtn4,Holebtn5]
         frogimage = [UIImage(named: "frog1.png")!,UIImage(named: "frog2.png")!,UIImage(named: "frog3.png")!,UIImage(named: "frog4.png")!,UIImage(named: "frog5.png")!] // frog 이미지들
     
         rankNameUIArray = [Rank1,Rank2,Rank3]
         rankScroeUIArray = [Rank1Score,Rank2Score,Rank3Score]
     }
+
+
     
     //게임 시작
     var frogtimer:Timer?
@@ -127,6 +131,7 @@ class ViewController: UIViewController {
     //--------------------------------------------------------
     
     // Object
+    var hunter:String = "Hunter name"
     var rankNameUIArray:Array<UILabel> = []
     var rankScroeUIArray:Array<UILabel> = []
     var gameonoff = false
