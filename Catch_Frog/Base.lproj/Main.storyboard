@@ -22,6 +22,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="nameText:" destination="GeY-yd-Spl" eventType="editingDidEnd" id="ygk-9D-4mX"/>
                                     <action selector="nametext:" destination="GeY-yd-Spl" eventType="editingDidEnd" id="JMh-FY-kjT"/>
                                 </connections>
                             </textField>
@@ -37,7 +38,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <action selector="resultname:" destination="GeY-yd-Spl" eventType="touchUpInside" id="WsJ-RB-CQ3"/>
+                                    <segue destination="tJ9-p9-47O" kind="presentation" identifier="vs2" modalPresentationStyle="pageSheet" id="kE6-sD-oFT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -45,7 +46,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="nameText" destination="AhI-Ez-YsO" id="1JV-j1-daU"/>
+                        <outlet property="nameText" destination="AhI-Ez-YsO" id="RiO-6T-xL0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hL9-Qn-nmw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -57,11 +58,11 @@
             <objects>
                 <viewController storyboardIdentifier="MVC" id="tJ9-p9-47O" customClass="ViewController" customModule="Catch_Frog" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UNT-SF-wWc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNy-dO-wy5">
-                                <rect key="frame" x="51" y="167" width="99" height="64"/>
+                                <rect key="frame" x="51" y="156" width="99" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="HARD"/>
@@ -71,7 +72,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FC-QC-5yb">
-                                <rect key="frame" x="149" y="167" width="99" height="64"/>
+                                <rect key="frame" x="149" y="156" width="99" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="NORMAL"/>
@@ -81,7 +82,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-Yk-oT0">
-                                <rect key="frame" x="247" y="167" width="99" height="64"/>
+                                <rect key="frame" x="247" y="156" width="99" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="EASY"/>
@@ -272,7 +273,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuD-Up-RCg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="42Z-h1-oXH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="873.91304347826099" y="91.741071428571431"/>
+            <point key="canvasLocation" x="871" y="102"/>
         </scene>
     </scenes>
     <resources>
