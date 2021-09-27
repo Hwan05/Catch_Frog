@@ -8,27 +8,22 @@
 import UIKit
 
 
-class resultstartview: UIViewController {
+class resultstartview: UIViewController, UITableViewDelegate {
+    
+
+    
     override func viewDidLoad() {
         //
+
     }
-    
 
     @IBOutlet var nameText: UITextField!
     
-    @IBAction func resultname(_ sender: Any) {
-        guard let mvc = storyboard?.instantiateViewController(identifier: "MVC") as? ViewController else{
-            return
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ViewController {
+            let ad = UIApplication.shared.delegate as? AppDelegate
+            ad?.paramname = self.nameText.text
         }
-        
-        mvc.hunter = nameText.text!
-        
-        
-        
-        mvc.modalPresentationStyle = .fullScreen
-        self.present(mvc, animated: false)
-        
-        
     }
 }
 
