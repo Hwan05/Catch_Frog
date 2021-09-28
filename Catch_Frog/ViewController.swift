@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        sbenable.isEnabled = false
         let ad = UIApplication.shared.delegate as? AppDelegate
         Huntername.text = ad?.paramname
         
@@ -46,9 +47,11 @@ class ViewController: UIViewController {
             self.HoleButtonArray[Int(random)].setTitle(String(random+1), for: UIControl.State.normal)
             self.HoleButtonArray[Int(random)].setImage(UIImage(named:""), for: .normal)
         }
+        // 타임오버 게임종료
         if elapsedTime <= 0 {
             frogtimer?.invalidate()
             frogtimer = nil
+            RankUpdate()
             print("게임 종료")
         }
     }
@@ -56,6 +59,7 @@ class ViewController: UIViewController {
     // 게임 초기화
     func Nextgame (){
         gameonoff = false
+        sbenable.isEnabled = true
         startcount = 5
         FrogCounter = 0
         FrogCount.text = String(format: "%d",FrogCounter) // 잡은 수 초기화
@@ -65,11 +69,12 @@ class ViewController: UIViewController {
     
     //Rank 갱신 미구현
     func RankUpdate(){
-        
         // 랭킹이 비어있는 경우
         if ranknameArray.isEmpty {
             ranknameArray.append(Huntername.text!)
             rankscoreArray.append(FrogCounter)
+            rankNameUIArray[0].text = ranknameArray[0]
+            rankScroeUIArray[0].text = String(rankscoreArray[0])
         }
         else{
             var count:Int = 0 // 배열 인덱스용
@@ -107,9 +112,13 @@ class ViewController: UIViewController {
     }
     
     //--------------------------------------------------------
+    
+    
+    @IBOutlet var sbenable: UIButton!
     var startcount = 5
     @IBAction func sb(_ sender: UIButton) {
         if gameonoff == false {
+            sbenable.isEnabled = false
             startLabel.text = String(startcount)
             maintime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.startcounter), userInfo: nil, repeats: true)
             Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
@@ -133,16 +142,23 @@ class ViewController: UIViewController {
     
     // Object
     var hunter:String = "Hunter name"
+    
     var rankNameUIArray:Array<UILabel> = []
     var rankScroeUIArray:Array<UILabel> = []
-    var gameonoff = false
+    
+    var gameonoff = false // 게임 실행 여부
     var HoleButtonArray: Array<UIButton> = [] //버튼 상태 저장
+    
     var rank:Array<String> = [] // 랭크 저장용
     var FrogCounter = 0 // 잡은 개구리수
     var StartTime:Data = Data() // 현재 시간정보
     var elapsedTime = 0 // 남은 시간
+    
+    // 랭킹관련
     var rankscoreArray:Array<Int> = []
     var ranknameArray:Array<String> = []
+    
+    // 번호별 frog이미지
     var frogimage:Array<UIImage> = []
     
     
