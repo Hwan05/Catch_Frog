@@ -239,7 +239,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbZ-Pr-ewB">
-                                <rect key="frame" x="187" y="815" width="46" height="30"/>
+                                <rect key="frame" x="177" y="540" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -267,6 +267,7 @@
                         <outlet property="Rank3" destination="MPM-mg-YXz" id="lVd-5p-XNP"/>
                         <outlet property="Rank3Score" destination="h8U-f2-06h" id="2LR-NB-1bI"/>
                         <outlet property="Time" destination="jA5-H7-vke" id="Wxo-UW-z1g"/>
+                        <outlet property="sbenable" destination="cbZ-Pr-ewB" id="Fzt-CB-Tfe"/>
                         <outlet property="startLabel" destination="NcI-Pd-pSx" id="jpO-Ao-szf"/>
                     </connections>
                 </viewController>
