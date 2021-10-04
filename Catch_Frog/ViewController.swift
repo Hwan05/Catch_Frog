@@ -17,7 +17,6 @@ class ViewController: UIViewController {
         sbenable.isEnabled = false
         let ad = UIApplication.shared.delegate as? AppDelegate
         Huntername.text = ad?.paramname
-        
         HoleButtonArray = [Holebtn1,Holebtn2,Holebtn3,Holebtn4,Holebtn5]
         frogimage = [UIImage(named: "frog1.png")!,UIImage(named: "frog2.png")!,UIImage(named: "frog3.png")!,UIImage(named: "frog4.png")!,UIImage(named: "frog5.png")!] // frog 이미지들
     
@@ -35,19 +34,48 @@ class ViewController: UIViewController {
         frogtimer = Timer.scheduledTimer(timeInterval: 3.5, target: self, selector: #selector(ViewController.frog), userInfo: nil, repeats: true)
     }
 
-    // 개구리 배치
+    // 개구리 배치 패턴
     @objc func frog(){
-        print("개구리배치")
-        let random = arc4random() % 5
+        print("개구리배치") // output 확인용
+        
+        
+        // frog 5 hole random on
+        var random = Int(arc4random() % 5)
+        // 0~3초이내 + 0.?? 초
         let randomtime:Double = Double(arc4random_uniform(3)) + drand48()
-        self.HoleButtonArray[Int(random)].setTitle("x", for: UIControl.State.normal)
-        self.HoleButtonArray[Int(random)].setImage(frogimage[Int(random)], for: .normal)
-        Timer.scheduledTimer(withTimeInterval: randomtime , repeats: false){ (timer) in
-            print("개구리배치끝")
-            self.HoleButtonArray[Int(random)].setTitle(String(random+1), for: UIControl.State.normal)
-            self.HoleButtonArray[Int(random)].setImage(UIImage(named:""), for: .normal)
+        
+        let randomcount = Int(arc4random() % 2)
+        
+        for _ in 0..<randomcount {
+            if self.HoleButtonArray[random].currentTitle == "x"{
+                continue
+            }
+            Timer.scheduledTimer(withTimeInterval: randomtime, repeats: false){ (timer) in
+                self.HoleButtonArray[random].setTitle("x", for: UIControl.State.normal) // frog Catchon  = button title "X"
+                self.HoleButtonArray[random].setImage(self.frogimage[random], for: .normal)
+                
+            }
+            if random == 4 {
+                random = random - 4
+            }else{
+                random = random + 1
+            }
         }
-        // 타임오버 게임종료
+ 
+
+        
+            
+        // frog off timer
+        Timer.scheduledTimer(withTimeInterval: randomtime, repeats: false){ (timer) in
+            print("개구리배치끝") // output 확인용
+            // 이미 개구리를 잡은 경우
+            if self.HoleButtonArray[random].currentTitle != "x"  {
+                self.HoleButtonArray[random].setTitle(String(random+1), for: UIControl.State.normal)
+                self.HoleButtonArray[random].setImage(UIImage(named:""), for: .normal)
+            }
+        }
+        
+        // timeover game off
         if elapsedTime <= 0 {
             frogtimer?.invalidate()
             frogtimer = nil
@@ -69,7 +97,7 @@ class ViewController: UIViewController {
     
     //Rank 갱신 미구현
     func RankUpdate(){
-        // 랭킹이 비어있는 경우
+        // 랭킹이 비어있는 경우, 아닌 경우
         if ranknameArray.isEmpty {
             ranknameArray.append(Huntername.text!)
             rankscoreArray.append(FrogCounter)
@@ -77,14 +105,16 @@ class ViewController: UIViewController {
             rankScroeUIArray[0].text = String(rankscoreArray[0])
         }
         else{
-            var count:Int = 0 // 배열 인덱스용
-            for i in rankscoreArray {
+            var count:Int = 0 // 배열 시퀸스
+            for i in rankscoreArray {// 저장된 배열 길이만큼 확인
                 if FrogCounter > i {
                     rankscoreArray.insert(FrogCounter, at: count)
                     ranknameArray.insert(Huntername.text!, at: count)
-                }else{
-                    count += 1
                 }
+                //갱신
+                rankNameUIArray[count].text = ranknameArray[count]
+                rankScroeUIArray[count].text = String(rankscoreArray[count])
+                count += 1
             }
         }
 //
@@ -141,13 +171,13 @@ class ViewController: UIViewController {
     //--------------------------------------------------------
     
     // Object
-    var hunter:String = "Hunter name"
+    var hunter:String = "Hunter name" // default name
     
     var rankNameUIArray:Array<UILabel> = []
     var rankScroeUIArray:Array<UILabel> = []
     
-    var gameonoff = false // 게임 실행 여부
-    var HoleButtonArray: Array<UIButton> = [] //버튼 상태 저장
+    var gameonoff = false // game start true:false
+    var HoleButtonArray: Array<UIButton> = [] // button state save
     
     var rank:Array<String> = [] // 랭크 저장용
     var FrogCounter = 0 // 잡은 개구리수
@@ -179,12 +209,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var FrogCount: UILabel!
     @IBOutlet weak var Time: UILabel!
     
+    
+    // main frog button
     @IBOutlet weak var Holebtn1:UIButton!
     @IBOutlet weak var Holebtn2:UIButton!
     @IBOutlet weak var Holebtn3:UIButton!
     @IBOutlet weak var Holebtn4:UIButton!
     @IBOutlet weak var Holebtn5:UIButton!
     
+    //start count viewLabel
     @IBOutlet var startLabel: UILabel!
     
     
