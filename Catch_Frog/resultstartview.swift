@@ -23,6 +23,7 @@ class resultstartview: UIViewController, UITableViewDelegate {
         if let vc = segue.destination as? ViewController {
             let ad = UIApplication.shared.delegate as? AppDelegate
             ad?.paramname = self.nameText.text
+          
         }
     }
 }
