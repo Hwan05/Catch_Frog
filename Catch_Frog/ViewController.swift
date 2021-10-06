@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         sbenable.isEnabled = false
         let ad = UIApplication.shared.delegate as? AppDelegate
-        Huntername.text = ad?.paramname
+        Huntername.text = (ad?.paramname != "" ? ad?.paramname:"Hunter Name" )
         HoleButtonArray = [Holebtn1,Holebtn2,Holebtn3,Holebtn4,Holebtn5]
         frogimage = [UIImage(named: "frog1.png")!,UIImage(named: "frog2.png")!,UIImage(named: "frog3.png")!,UIImage(named: "frog4.png")!,UIImage(named: "frog5.png")!] // frog 이미지들
     
