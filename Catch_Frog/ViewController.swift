@@ -4,6 +4,10 @@
 //
 //  Created by Hwan의 MacBook Pro on 2021/09/16.
 //
+// 과제---
+// 랭크 갱신 보수
+// 개구리 등장 보수
+
 
 import UIKit
 import Foundation
@@ -17,6 +21,8 @@ class ViewController: UIViewController {
         sbenable.isEnabled = false
         let ad = UIApplication.shared.delegate as? AppDelegate
         Huntername.text = (ad?.paramname != "" ? ad?.paramname:"Hunter Name" )
+        
+        //홀 ui 배열 저장
         HoleButtonArray = [Holebtn1,Holebtn2,Holebtn3,Holebtn4,Holebtn5]
         frogimage = [UIImage(named: "frog1.png")!,UIImage(named: "frog2.png")!,UIImage(named: "frog3.png")!,UIImage(named: "frog4.png")!,UIImage(named: "frog5.png")!] // frog 이미지들
     
@@ -93,6 +99,12 @@ class ViewController: UIViewController {
         FrogCount.text = String(format: "%d",FrogCounter) // 잡은 수 초기화
         elapsedTime = 30 // 남은시간 30초
         Time.text = String(format: "%d", elapsedTime)
+        
+        // 모든 홀 초기화
+        for i in 0...4 {
+            HoleButtonArray[i].setTitle(String(i+1), for: .normal)
+            HoleButtonArray[i].setImage(UIImage(named:""), for: .normal)
+        }
     }
     
     //Rank 갱신 미구현
@@ -107,10 +119,11 @@ class ViewController: UIViewController {
         else{
             var count:Int = 0 // 배열 시퀸스
             for i in rankscoreArray {// 저장된 배열 길이만큼 확인
-                if FrogCounter > i {
+                if FrogCounter > i { // 비교
                     rankscoreArray.insert(FrogCounter, at: count)
                     ranknameArray.insert(Huntername.text!, at: count)
                 }
+                
                 //갱신
                 rankNameUIArray[count].text = ranknameArray[count]
                 rankScroeUIArray[count].text = String(rankscoreArray[count])
@@ -145,22 +158,26 @@ class ViewController: UIViewController {
     
     
     @IBOutlet var sbenable: UIButton!
-    var startcount = 5
+    var starttime:Timer?
+    var startcount:Int?
     @IBAction func sb(_ sender: UIButton) {
+        startcount = 5
         if gameonoff == false {
             sbenable.isEnabled = false
-            startLabel.text = String(startcount)
-            maintime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.startcounter), userInfo: nil, repeats: true)
+            startLabel.text = String(startcount!)
+            starttime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.startcounter), userInfo: nil, repeats: true)
             Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
                 self.start()
             }
-           
+            
+            starttime = nil
         }
     }
+    //count 표시
     @objc func startcounter(){
         if startcount != 0 {
-            startcount = startcount - 1
-            startLabel.text = String(startcount)
+            startcount = startcount! - 1
+            startLabel.text = String(startcount!)
         }else { startLabel.text = "START !"
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false ) { _ in
                 self.startLabel.text = ""
