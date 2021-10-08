@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         startcount = 5
         FrogCounter = 0
         FrogCount.text = String(format: "%d",FrogCounter) // 잡은 수 초기화
-        elapsedTime = 30 // 남은시간 30초
+        elapsedTime = 5 // 남은시간 30초
         Time.text = String(format: "%d", elapsedTime)
         
         // 모든 홀 초기화
@@ -117,16 +117,24 @@ class ViewController: UIViewController {
             rankScroeUIArray[0].text = String(rankscoreArray[0])
         }
         else{
-            var count:Int = 0 // 배열 시퀸스
+            
+            //배열 길이만큼 검사
             for i in rankscoreArray {// 저장된 배열 길이만큼 확인
+                var count:Int = 0 // 인덱스 시퀸스
                 if FrogCounter > i { // 비교
                     rankscoreArray.insert(FrogCounter, at: count)
                     ranknameArray.insert(Huntername.text!, at: count)
+                    break
                 }
-                
+                count += 1
+            }
+            print(rankscoreArray)
+            for _ in rankscoreArray {
                 //갱신
+                var count:Int = 0 // 인덱스 시퀸스
                 rankNameUIArray[count].text = ranknameArray[count]
                 rankScroeUIArray[count].text = String(rankscoreArray[count])
+                if count == 3 {break}
                 count += 1
             }
         }
@@ -135,10 +143,10 @@ class ViewController: UIViewController {
 //        rankScroeUIArray[i].text = String(rankscoreArray[i])
     }
     
-    /// 메인 제한 시간
     var maintime:Timer?
+    /// 메인 제한 시간
     func timerstart() {
-    maintime =  Timer.scheduledTimer(timeInterval: 1, target: self, selector: timeSelection, userInfo: nil, repeats: true) //timer,시간간격,동작될 뷰 , 타이머가 구동될 때 실행할 함수 , 사용자 정보, 반복여부
+        maintime =  Timer.scheduledTimer(timeInterval: 1, target: self, selector: timeSelection, userInfo: nil, repeats: true) //timer,시간간격,동작될 뷰 , 타이머가 구동될 때 실행할 함수 , 사용자 정보, 반복여부
     }
     let timeSelection:Selector = #selector(ViewController.updateTime)
     
@@ -158,6 +166,7 @@ class ViewController: UIViewController {
     
     
     @IBOutlet var sbenable: UIButton!
+    
     var starttime:Timer?
     var startcount:Int?
     @IBAction func sb(_ sender: UIButton) {
@@ -170,18 +179,19 @@ class ViewController: UIViewController {
                 self.start()
             }
             
-            starttime = nil
         }
     }
     //count 표시
     @objc func startcounter(){
-        if startcount != 0 {
+        if startcount != 1 {
             startcount = startcount! - 1
             startLabel.text = String(startcount!)
         }else { startLabel.text = "START !"
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false ) { _ in
                 self.startLabel.text = ""
             }
+            starttime?.invalidate()
+            starttime = nil
         }
     }
     
